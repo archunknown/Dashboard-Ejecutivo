@@ -303,7 +303,7 @@
                             <div class="user-info">
                                 <h4>María Elena González Vásquez</h4>
                                 <p>Matemáticas - 3° Secundaria</p>
-                                <span class="user-email">maria.gonzalez@jfsanchezcarrion.edu.pe</span>
+                                <span class="user-email">m75123456@jfsanchezcarrion.edu.pe</span>
                             </div>
                             <div class="user-status active">Activo</div>
                         </div>
@@ -314,7 +314,7 @@
                             <div class="user-info">
                                 <h4>Carlos Alberto Rodríguez Huamán</h4>
                                 <p>Historia y Geografía - 4° Secundaria</p>
-                                <span class="user-email">carlos.rodriguez@jfsanchezcarrion.edu.pe</span>
+                                <span class="user-email">c75234567@jfsanchezcarrion.edu.pe</span>
                             </div>
                             <div class="user-status active">Activo</div>
                         </div>
@@ -325,7 +325,7 @@
                             <div class="user-info">
                                 <h4>Lucía Patricia Paredes Quispe</h4>
                                 <p>Comunicación - 2° Secundaria</p>
-                                <span class="user-email">lucia.paredes@jfsanchezcarrion.edu.pe</span>
+                                <span class="user-email">l75345678@jfsanchezcarrion.edu.pe</span>
                             </div>
                             <div class="user-status active">Activo</div>
                         </div>
@@ -336,9 +336,77 @@
                             <div class="user-info">
                                 <h4>Roberto Miguel Herrera Ccahuana</h4>
                                 <p>Ciencias Naturales - 1° Secundaria</p>
-                                <span class="user-email">roberto.herrera@jfsanchezcarrion.edu.pe</span>
+                                <span class="user-email">r75456789@jfsanchezcarrion.edu.pe</span>
                             </div>
                             <div class="user-status inactive">Inactivo</div>
+                        </div>
+                    </div>
+                    <div class="users-list" id="estudiantes-list" style="display: none;">
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/0085ff/ffffff?text=AP" alt="Ana Pérez">
+                            </div>
+                            <div class="user-info">
+                                <h4>Ana María Pérez Quispe</h4>
+                                <p>1° Primaria - Sección A</p>
+                                <span class="user-email">a76123456@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/00a7ff/ffffff?text=JL" alt="José López">
+                            </div>
+                            <div class="user-info">
+                                <h4>José Luis López Mendoza</h4>
+                                <p>3° Primaria - Sección B</p>
+                                <span class="user-email">j76234567@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/82ceff/ffffff?text=MR" alt="María Rodríguez">
+                            </div>
+                            <div class="user-info">
+                                <h4>María Fernanda Rodríguez Silva</h4>
+                                <p>5° Primaria - Sección C</p>
+                                <span class="user-email">m76345678@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/0085ff/ffffff?text=DG" alt="Diego García">
+                            </div>
+                            <div class="user-info">
+                                <h4>Diego Alejandro García Huamán</h4>
+                                <p>2° Secundaria - Sección A</p>
+                                <span class="user-email">d76456789@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/00a7ff/ffffff?text=SF" alt="Sofía Flores">
+                            </div>
+                            <div class="user-info">
+                                <h4>Sofía Isabel Flores Vargas</h4>
+                                <p>4° Secundaria - Sección B</p>
+                                <span class="user-email">s76567890@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/82ceff/ffffff?text=AC" alt="Andrés Castro">
+                            </div>
+                            <div class="user-info">
+                                <h4>Andrés Felipe Castro Morales</h4>
+                                <p>5° Secundaria - Sección A</p>
+                                <span class="user-email">a76678901@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
                         </div>
                     </div>
                 </div>
@@ -347,10 +415,16 @@
             <!-- Repositorios Section -->
             <section id="repositorios" class="content-section">
                 <div class="section-header">
-                    <h1>Repositorios Educativos</h1>
-                    <p>Contenido educativo creado por su institución</p>
+                    <h1>Repositorios Educativos Públicos</h1>
+                    <p>Contenido educativo compartido por instituciones de todo el Perú</p>
                 </div>
                 <div class="repositories-container">
+                    <div class="repositories-actions">
+                        <button class="btn-primary" id="uploadContentBtn">
+                            <i class="fas fa-upload"></i>
+                            Subir Contenido
+                        </button>
+                    </div>
                     <div class="repositories-filters">
                         <div class="filter-group">
                             <select id="subject-filter">
@@ -359,6 +433,11 @@
                                 <option value="comunicacion">Comunicación</option>
                                 <option value="ciencias">Ciencias Naturales</option>
                                 <option value="historia">Historia y Geografía</option>
+                                <option value="ingles">Inglés</option>
+                                <option value="educacion-fisica">Educación Física</option>
+                                <option value="arte">Arte y Cultura</option>
+                                <option value="religion">Educación Religiosa</option>
+                                <option value="tutoria">Tutoría</option>
                             </select>
                         </div>
                         <div class="filter-group">
@@ -371,77 +450,105 @@
                                 <option value="5">5° Secundaria</option>
                             </select>
                         </div>
+                        <div class="filter-group">
+                            <select id="type-filter">
+                                <option value="">Todos los tipos</option>
+                                <option value="presentacion">Presentaciones</option>
+                                <option value="ejercicios">Ejercicios</option>
+                                <option value="evaluacion">Evaluaciones</option>
+                                <option value="proyecto">Proyectos</option>
+                                <option value="video">Videos</option>
+                                <option value="documento">Documentos</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="institution-filter">
+                                <option value="">Todas las instituciones</option>
+                                <option value="colegio">Colegios</option>
+                                <option value="instituto">Institutos</option>
+                                <option value="universidad">Universidades</option>
+                                <option value="minedu">MINEDU</option>
+                            </select>
+                        </div>
                         <div class="search-box">
                             <i class="fas fa-search"></i>
                             <input type="text" id="repo-search" placeholder="Buscar en repositorios...">
                         </div>
                     </div>
                     <div class="repositories-grid">
-                        <div class="repo-card" data-subject="matematicas" data-grade="3">
+                        <div class="repo-card" data-subject="matematicas" data-grade="3" data-type="presentacion" data-institution="colegio">
                             <div class="repo-icon">
                                 <i class="fas fa-calculator"></i>
                             </div>
                             <div class="repo-content">
                                 <h4>Álgebra Básica - Ecuaciones Lineales</h4>
-                                <p>Autor: María Elena González Vásquez</p>
+                                <p>I.E. San Martín de Porres - Lima</p>
                                 <div class="repo-meta">
                                     <span class="repo-subject">Matemáticas</span>
                                     <span class="repo-grade">3° Secundaria</span>
+                                    <span class="repo-type">Presentación</span>
                                 </div>
                                 <div class="repo-stats">
-                                    <span><i class="fas fa-download"></i> 45 descargas</span>
+                                    <span><i class="fas fa-download"></i> 245 descargas</span>
                                     <span><i class="fas fa-star"></i> 4.8</span>
+                                    <span><i class="fas fa-eye"></i> 1,234 vistas</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="repo-card" data-subject="historia" data-grade="4">
+                        <div class="repo-card" data-subject="historia" data-grade="4" data-type="documento" data-institution="universidad">
                             <div class="repo-icon">
                                 <i class="fas fa-landmark"></i>
                             </div>
                             <div class="repo-content">
                                 <h4>Historia del Perú - Época Republicana</h4>
-                                <p>Autor: Carlos Alberto Rodríguez Huamán</p>
+                                <p>Universidad Nacional Mayor de San Marcos</p>
                                 <div class="repo-meta">
                                     <span class="repo-subject">Historia</span>
                                     <span class="repo-grade">4° Secundaria</span>
+                                    <span class="repo-type">Documento</span>
                                 </div>
                                 <div class="repo-stats">
-                                    <span><i class="fas fa-download"></i> 32 descargas</span>
-                                    <span><i class="fas fa-star"></i> 4.6</span>
+                                    <span><i class="fas fa-download"></i> 432 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.9</span>
+                                    <span><i class="fas fa-eye"></i> 2,156 vistas</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="repo-card" data-subject="comunicacion" data-grade="2">
+                        <div class="repo-card" data-subject="comunicacion" data-grade="2" data-type="ejercicios" data-institution="minedu">
                             <div class="repo-icon">
                                 <i class="fas fa-pen-fancy"></i>
                             </div>
                             <div class="repo-content">
                                 <h4>Comprensión Lectora - Textos Narrativos</h4>
-                                <p>Autor: Lucía Patricia Paredes Quispe</p>
+                                <p>Ministerio de Educación</p>
                                 <div class="repo-meta">
                                     <span class="repo-subject">Comunicación</span>
                                     <span class="repo-grade">2° Secundaria</span>
+                                    <span class="repo-type">Ejercicios</span>
                                 </div>
                                 <div class="repo-stats">
-                                    <span><i class="fas fa-download"></i> 28 descargas</span>
-                                    <span><i class="fas fa-star"></i> 4.9</span>
+                                    <span><i class="fas fa-download"></i> 1,128 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                    <span><i class="fas fa-eye"></i> 3,456 vistas</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="repo-card" data-subject="ciencias" data-grade="1">
+                        <div class="repo-card" data-subject="ciencias" data-grade="1" data-type="video" data-institution="instituto">
                             <div class="repo-icon">
                                 <i class="fas fa-microscope"></i>
                             </div>
                             <div class="repo-content">
                                 <h4>Biología - Sistema Digestivo Humano</h4>
-                                <p>Autor: Roberto Miguel Herrera Ccahuana</p>
+                                <p>Instituto Pedagógico Nacional Monterrico</p>
                                 <div class="repo-meta">
                                     <span class="repo-subject">Ciencias</span>
                                     <span class="repo-grade">1° Secundaria</span>
+                                    <span class="repo-type">Video</span>
                                 </div>
                                 <div class="repo-stats">
-                                    <span><i class="fas fa-download"></i> 38 descargas</span>
-                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                    <span><i class="fas fa-download"></i> 678 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.6</span>
+                                    <span><i class="fas fa-eye"></i> 4,789 vistas</span>
                                 </div>
                             </div>
                         </div>
@@ -452,8 +559,8 @@
             <!-- Biblioteca Section -->
             <section id="biblioteca" class="content-section">
                 <div class="section-header">
-                    <h1>Biblioteca Digital</h1>
-                    <p>Recursos educativos y libros digitales para su institución</p>
+                    <h1>Biblioteca Digital Pública</h1>
+                    <p>Libros y recursos educativos de acceso libre para toda la comunidad educativa</p>
                 </div>
                 <div class="library-container">
                     <div class="library-actions">
@@ -461,35 +568,75 @@
                             <i class="fas fa-upload"></i>
                             Subir Libro
                         </button>
-                        <div class="library-filters">
+                    </div>
+                    <div class="library-filters">
+                        <div class="filter-group">
                             <select id="category-filter">
                                 <option value="">Todas las categorías</option>
                                 <option value="textos">Textos Escolares</option>
-                                <option value="literatura">Literatura</option>
+                                <option value="literatura">Literatura Peruana</option>
+                                <option value="literatura-universal">Literatura Universal</option>
                                 <option value="ciencia">Ciencia y Tecnología</option>
                                 <option value="historia">Historia y Cultura</option>
+                                <option value="matematicas">Matemáticas</option>
+                                <option value="idiomas">Idiomas</option>
+                                <option value="arte">Arte y Música</option>
+                                <option value="filosofia">Filosofía</option>
+                                <option value="investigacion">Investigación</option>
                             </select>
-                            <div class="search-box">
-                                <i class="fas fa-search"></i>
-                                <input type="text" id="library-search" placeholder="Buscar libros...">
-                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <select id="level-filter">
+                                <option value="">Todos los niveles</option>
+                                <option value="primaria">Primaria</option>
+                                <option value="secundaria">Secundaria</option>
+                                <option value="superior">Superior</option>
+                                <option value="docente">Docentes</option>
+                                <option value="general">Público General</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="language-filter">
+                                <option value="">Todos los idiomas</option>
+                                <option value="espanol">Español</option>
+                                <option value="quechua">Quechua</option>
+                                <option value="ingles">Inglés</option>
+                                <option value="frances">Francés</option>
+                                <option value="portugues">Portugués</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="format-filter">
+                                <option value="">Todos los formatos</option>
+                                <option value="pdf">PDF</option>
+                                <option value="epub">EPUB</option>
+                                <option value="audio">Audiolibro</option>
+                                <option value="video">Video</option>
+                                <option value="interactivo">Interactivo</option>
+                            </select>
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="library-search" placeholder="Buscar libros y recursos...">
                         </div>
                     </div>
                     <div class="library-grid">
-                        <div class="book-card" data-category="textos">
+                        <div class="book-card" data-category="textos" data-level="secundaria" data-language="espanol" data-format="pdf">
                             <div class="book-cover">
                                 <i class="fas fa-book"></i>
                             </div>
                             <div class="book-info">
                                 <h4>Matemática 3° Secundaria</h4>
-                                <p>Ministerio de Educación</p>
+                                <p>Ministerio de Educación del Perú</p>
                                 <div class="book-meta">
                                     <span class="book-category">Textos Escolares</span>
-                                    <span class="book-year">2024</span>
+                                    <span class="book-level">Secundaria</span>
+                                    <span class="book-format">PDF</span>
                                 </div>
                                 <div class="book-stats">
-                                    <span><i class="fas fa-eye"></i> 156 vistas</span>
-                                    <span><i class="fas fa-download"></i> 89 descargas</span>
+                                    <span><i class="fas fa-eye"></i> 12,456 vistas</span>
+                                    <span><i class="fas fa-download"></i> 8,934 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.7</span>
                                 </div>
                                 <button class="btn-secondary">
                                     <i class="fas fa-external-link-alt"></i>
@@ -497,7 +644,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="book-card" data-category="literatura">
+                        <div class="book-card" data-category="literatura" data-level="general" data-language="espanol" data-format="epub">
                             <div class="book-cover">
                                 <i class="fas fa-book-open"></i>
                             </div>
@@ -505,12 +652,14 @@
                                 <h4>Tradiciones Peruanas</h4>
                                 <p>Ricardo Palma</p>
                                 <div class="book-meta">
-                                    <span class="book-category">Literatura</span>
-                                    <span class="book-year">Clásico</span>
+                                    <span class="book-category">Literatura Peruana</span>
+                                    <span class="book-level">General</span>
+                                    <span class="book-format">EPUB</span>
                                 </div>
                                 <div class="book-stats">
-                                    <span><i class="fas fa-eye"></i> 203 vistas</span>
-                                    <span><i class="fas fa-download"></i> 145 descargas</span>
+                                    <span><i class="fas fa-eye"></i> 25,203 vistas</span>
+                                    <span><i class="fas fa-download"></i> 18,145 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.9</span>
                                 </div>
                                 <button class="btn-secondary">
                                     <i class="fas fa-external-link-alt"></i>
@@ -518,45 +667,49 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="book-card" data-category="ciencia">
-                            <div class="book-cover">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <div class="book-info">
-                                <h4>Ciencia y Tecnología 2° Secundaria</h4>
-                                <p>Ministerio de Educación</p>
-                                <div class="book-meta">
-                                    <span class="book-category">Ciencia y Tecnología</span>
-                                    <span class="book-year">2024</span>
-                                </div>
-                                <div class="book-stats">
-                                    <span><i class="fas fa-eye"></i> 134 vistas</span>
-                                    <span><i class="fas fa-download"></i> 67 descargas</span>
-                                </div>
-                                <button class="btn-secondary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Ver Libro
-                                </button>
-                            </div>
-                        </div>
-                        <div class="book-card" data-category="historia">
+                        <div class="book-card" data-category="historia" data-level="superior" data-language="espanol" data-format="pdf">
                             <div class="book-cover">
                                 <i class="fas fa-scroll"></i>
                             </div>
                             <div class="book-info">
                                 <h4>Historia del Perú Contemporáneo</h4>
-                                <p>Carlos Contreras</p>
+                                <p>Carlos Contreras - IEP</p>
                                 <div class="book-meta">
-                                    <span class="book-category">Historia y Cultura</span>
-                                    <span class="book-year">2023</span>
+                                    <span class="book-category">Historia</span>
+                                    <span class="book-level">Superior</span>
+                                    <span class="book-format">PDF</span>
                                 </div>
                                 <div class="book-stats">
-                                    <span><i class="fas fa-eye"></i> 178 vistas</span>
-                                    <span><i class="fas fa-download"></i> 92 descargas</span>
+                                    <span><i class="fas fa-eye"></i> 15,678 vistas</span>
+                                    <span><i class="fas fa-download"></i> 9,234 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.8</span>
                                 </div>
                                 <button class="btn-secondary">
                                     <i class="fas fa-external-link-alt"></i>
                                     Ver Libro
+                                </button>
+                            </div>
+                        </div>
+                        <div class="book-card" data-category="quechua" data-level="general" data-language="quechua" data-format="audio">
+                            <div class="book-cover">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="book-info">
+                                <h4>Cuentos Andinos en Quechua</h4>
+                                <p>Academia Mayor de la Lengua Quechua</p>
+                                <div class="book-meta">
+                                    <span class="book-category">Literatura</span>
+                                    <span class="book-level">General</span>
+                                    <span class="book-format">Audio</span>
+                                </div>
+                                <div class="book-stats">
+                                    <span><i class="fas fa-eye"></i> 8,456 vistas</span>
+                                    <span><i class="fas fa-download"></i> 5,678 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.6</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Escuchar
                                 </button>
                             </div>
                         </div>
@@ -576,16 +729,80 @@
             <div class="modal-body">
                 <div class="generator-form">
                     <div class="form-group">
+                        <label>Tipo de Usuario</label>
+                        <select id="userTypeSelect">
+                            <option value="estudiante">Estudiante</option>
+                            <option value="docente">Docente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>DNI</label>
+                        <input type="text" id="dniInput" placeholder="Ingrese DNI (8 dígitos)" maxlength="8" pattern="[0-9]{8}">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" id="firstNameInput" placeholder="Ingrese nombres">
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" id="lastNameInput" placeholder="Ingrese apellidos">
+                    </div>
+                    <div class="form-group" id="gradeSection">
+                        <label>Grado</label>
+                        <select id="gradeSelect">
+                            <option value="">Seleccione grado</option>
+                            <option value="1-primaria">1° Primaria</option>
+                            <option value="2-primaria">2° Primaria</option>
+                            <option value="3-primaria">3° Primaria</option>
+                            <option value="4-primaria">4° Primaria</option>
+                            <option value="5-primaria">5° Primaria</option>
+                            <option value="6-primaria">6° Primaria</option>
+                            <option value="1-secundaria">1° Secundaria</option>
+                            <option value="2-secundaria">2° Secundaria</option>
+                            <option value="3-secundaria">3° Secundaria</option>
+                            <option value="4-secundaria">4° Secundaria</option>
+                            <option value="5-secundaria">5° Secundaria</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="sectionGroup">
+                        <label>Sección</label>
+                        <select id="sectionSelect">
+                            <option value="">Seleccione sección</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                            <option value="I">I</option>
+                            <option value="J">J</option>
+                            <option value="K">K</option>
+                            <option value="L">L</option>
+                            <option value="M">M</option>
+                            <option value="N">N</option>
+                            <option value="O">O</option>
+                            <option value="P">P</option>
+                            <option value="Q">Q</option>
+                            <option value="R">R</option>
+                            <option value="S">S</option>
+                            <option value="T">T</option>
+                            <option value="U">U</option>
+                            <option value="V">V</option>
+                            <option value="W">W</option>
+                            <option value="X">X</option>
+                            <option value="Y">Y</option>
+                            <option value="Z">Z</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Dominio Institucional</label>
                         <input type="text" id="domain" value="jfsanchezcarrion.edu.pe" readonly>
                     </div>
-                    <div class="form-group">
-                        <label>Cantidad de Correos a Generar (máx. 100)</label>
-                        <input type="number" id="emailCount" min="1" max="100" value="10">
-                    </div>
                     <button id="generateBtn" class="btn-primary">
-                        <i class="fas fa-magic"></i>
-                        Generar Correos
+                        <i class="fas fa-plus"></i>
+                        Crear Correo Institucional
                     </button>
                 </div>
                 <div id="generatedEmails" class="generated-emails" style="display: none;">

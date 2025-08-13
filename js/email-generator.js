@@ -3,107 +3,95 @@ class EmailGenerator {
     constructor() {
         this.modal = document.getElementById('emailModal');
         this.generateBtn = document.getElementById('generateBtn');
-        this.generateEmailsBtn = document.getElementById('generateEmailsBtn');
         this.closeBtn = document.querySelector('.close');
-        this.domainInput = document.getElementById('domain');
-        this.emailCountInput = document.getElementById('emailCount');
-        this.generatedEmailsDiv = document.getElementById('generatedEmails');
-        this.emailsListDiv = document.querySelector('.emails-list');
+        this.generateEmailsBtn = document.getElementById('generateEmailsBtn');
         this.downloadBtn = document.getElementById('downloadEmails');
-        
-        // Nombres y apellidos peruanos comunes para generar correos ficticios
-        this.nombres = [
-            'María', 'José', 'Ana', 'Carlos', 'Rosa', 'Luis', 'Carmen', 'Miguel', 'Elena', 'Jorge',
-            'Patricia', 'Roberto', 'Lucía', 'Fernando', 'Isabel', 'Ricardo', 'Gloria', 'Alberto',
-            'Teresa', 'Manuel', 'Silvia', 'Francisco', 'Mónica', 'Antonio', 'Beatriz', 'Raúl',
-            'Claudia', 'Víctor', 'Pilar', 'Sergio', 'Alejandra', 'Andrés', 'Cristina', 'Diego',
-            'Natalia', 'Javier', 'Verónica', 'Óscar', 'Adriana', 'Gonzalo', 'Paola', 'Rodrigo',
-            'Vanessa', 'Martín', 'Daniela', 'Iván', 'Lorena', 'Rubén', 'Cecilia', 'Emilio'
-        ];
-        
-        this.apellidos = [
-            'García', 'González', 'Rodríguez', 'Fernández', 'López', 'Martínez', 'Sánchez', 'Pérez',
-            'Gómez', 'Martín', 'Jiménez', 'Ruiz', 'Hernández', 'Díaz', 'Moreno', 'Muñoz',
-            'Álvarez', 'Romero', 'Alonso', 'Gutiérrez', 'Navarro', 'Torres', 'Domínguez', 'Vázquez',
-            'Ramos', 'Gil', 'Ramírez', 'Serrano', 'Blanco', 'Suárez', 'Molina', 'Morales',
-            'Ortega', 'Delgado', 'Castro', 'Ortiz', 'Rubio', 'Marín', 'Sanz', 'Iglesias',
-            'Medina', 'Garrido', 'Cortés', 'Castillo', 'Santos', 'Lozano', 'Guerrero', 'Cano',
-            'Prieto', 'Méndez', 'Cruz', 'Flores', 'Herrera', 'Peña', 'León', 'Marquez',
-            'Cabrera', 'Gallego', 'Calvo', 'Vidal', 'Campos', 'Reyes', 'Vega', 'Fuentes',
-            'Carrasco', 'Diez', 'Caballero', 'Nieto', 'Aguilar', 'Pascual', 'Santamaría', 'Vargas',
-            'Giménez', 'Montero', 'Ibáñez', 'Ferrer', 'Arias', 'Mora', 'Carmona', 'Vicente',
-            'Rojas', 'Soto', 'Crespo', 'Román', 'Pastor', 'Sáez', 'Lorenzo', 'Montoya',
-            'Quispe', 'Huamán', 'Ccahuana', 'Mamani', 'Condori', 'Apaza', 'Choque', 'Flores'
-        ];
-        
         this.generatedEmails = [];
+        
         this.init();
     }
     
     init() {
         this.setupEventListeners();
+        this.setupUserTypeToggle();
     }
     
     setupEventListeners() {
-        // Open modal
         if (this.generateEmailsBtn) {
             this.generateEmailsBtn.addEventListener('click', () => {
                 this.openModal();
             });
         }
         
-        // Close modal
+        if (this.generateBtn) {
+            this.generateBtn.addEventListener('click', () => {
+                this.createEmail();
+            });
+        }
+        
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', () => {
                 this.closeModal();
             });
         }
         
-        // Close modal when clicking outside
-        if (this.modal) {
-            this.modal.addEventListener('click', (e) => {
-                if (e.target === this.modal) {
-                    this.closeModal();
-                }
-            });
-        }
-        
-        // Generate emails
-        if (this.generateBtn) {
-            this.generateBtn.addEventListener('click', () => {
-                this.generateEmails();
-            });
-        }
-        
-        // Download emails
         if (this.downloadBtn) {
             this.downloadBtn.addEventListener('click', () => {
-                this.downloadEmailsList();
+                this.downloadEmailList();
             });
         }
         
-        // Escape key to close modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.modal.style.display === 'block') {
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
                 this.closeModal();
             }
         });
+        
+        // Add input validation
+        const dniInput = document.getElementById('dniInput');
+        if (dniInput) {
+            dniInput.addEventListener('input', (e) => {
+                // Only allow numbers
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+        }
+    }
+    
+    setupUserTypeToggle() {
+        const userTypeSelect = document.getElementById('userTypeSelect');
+        const gradeSection = document.getElementById('gradeSection');
+        const sectionGroup = document.getElementById('sectionGroup');
+        
+        if (userTypeSelect && gradeSection && sectionGroup) {
+            userTypeSelect.addEventListener('change', (e) => {
+                if (e.target.value === 'estudiante') {
+                    gradeSection.style.display = 'block';
+                    sectionGroup.style.display = 'block';
+                } else {
+                    gradeSection.style.display = 'none';
+                    sectionGroup.style.display = 'none';
+                    // Clear selections
+                    document.getElementById('gradeSelect').value = '';
+                    document.getElementById('sectionSelect').value = '';
+                }
+            });
+            
+            // Initial state
+            if (userTypeSelect.value === 'estudiante') {
+                gradeSection.style.display = 'block';
+                sectionGroup.style.display = 'block';
+            } else {
+                gradeSection.style.display = 'none';
+                sectionGroup.style.display = 'none';
+            }
+        }
     }
     
     openModal() {
         if (this.modal) {
             this.modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            
-            // Reset form
-            this.resetForm();
-            
-            // Focus on email count input
-            if (this.emailCountInput) {
-                setTimeout(() => {
-                    this.emailCountInput.focus();
-                }, 100);
-            }
         }
     }
     
@@ -111,171 +99,242 @@ class EmailGenerator {
         if (this.modal) {
             this.modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            this.resetForm();
         }
     }
     
     resetForm() {
-        if (this.emailCountInput) {
-            this.emailCountInput.value = '10';
-        }
+        const dniInput = document.getElementById('dniInput');
+        const firstNameInput = document.getElementById('firstNameInput');
+        const lastNameInput = document.getElementById('lastNameInput');
+        const userTypeSelect = document.getElementById('userTypeSelect');
+        const gradeSelect = document.getElementById('gradeSelect');
+        const sectionSelect = document.getElementById('sectionSelect');
         
-        if (this.generatedEmailsDiv) {
-            this.generatedEmailsDiv.style.display = 'none';
-        }
+        if (dniInput) dniInput.value = '';
+        if (firstNameInput) firstNameInput.value = '';
+        if (lastNameInput) lastNameInput.value = '';
+        if (userTypeSelect) userTypeSelect.value = 'estudiante';
+        if (gradeSelect) gradeSelect.value = '';
+        if (sectionSelect) sectionSelect.value = '';
         
-        if (this.emailsListDiv) {
-            this.emailsListDiv.innerHTML = '';
-        }
-        
-        this.generatedEmails = [];
+        // Reset visibility
+        this.setupUserTypeToggle();
     }
     
-    generateEmails() {
-        const count = parseInt(this.emailCountInput.value) || 10;
-        const domain = this.domainInput.value || 'jfsanchezcarrion.edu.pe';
+    createEmail() {
+        const dniInput = document.getElementById('dniInput');
+        const firstNameInput = document.getElementById('firstNameInput');
+        const lastNameInput = document.getElementById('lastNameInput');
+        const userTypeSelect = document.getElementById('userTypeSelect');
+        const gradeSelect = document.getElementById('gradeSelect');
+        const sectionSelect = document.getElementById('sectionSelect');
+        const domainInput = document.getElementById('domain');
+        const generatedEmailsDiv = document.getElementById('generatedEmails');
+        const emailsList = document.querySelector('.emails-list');
         
-        // Validate count
-        if (count < 1 || count > 100) {
-            this.showNotification('Por favor, ingrese un número entre 1 y 100', 'error');
+        if (!dniInput || !firstNameInput || !lastNameInput || !userTypeSelect || !domainInput || !generatedEmailsDiv || !emailsList) {
+            console.error('Required elements not found');
             return;
         }
         
-        // Clear previous results
-        this.generatedEmails = [];
-        this.emailsListDiv.innerHTML = '';
+        const dni = dniInput.value.trim();
+        const firstName = firstNameInput.value.trim();
+        const lastName = lastNameInput.value.trim();
+        const userType = userTypeSelect.value;
+        const grade = gradeSelect ? gradeSelect.value : '';
+        const section = sectionSelect ? sectionSelect.value : '';
+        const domain = domainInput.value;
         
-        // Show loading state
-        this.generateBtn.disabled = true;
-        this.generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
-        
-        // Simulate generation delay
-        setTimeout(() => {
-            this.createEmailList(count, domain);
-            this.displayGeneratedEmails();
-            this.showGeneratedSection();
-            
-            // Reset button
-            this.generateBtn.disabled = false;
-            this.generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generar Correos';
-            
-            this.showNotification(`${count} correos generados exitosamente`, 'success');
-        }, 1500);
-    }
-    
-    createEmailList(count, domain) {
-        const usedCombinations = new Set();
-        
-        for (let i = 0; i < count; i++) {
-            let nombre, apellido, email, username;
-            let attempts = 0;
-            
-            // Generate unique email
-            do {
-                nombre = this.getRandomItem(this.nombres);
-                apellido = this.getRandomItem(this.apellidos);
-                username = this.createUsername(nombre, apellido);
-                email = `${username}@${domain}`;
-                attempts++;
-                
-                // Prevent infinite loop
-                if (attempts > 50) {
-                    username = `${username}${Math.floor(Math.random() * 999) + 1}`;
-                    email = `${username}@${domain}`;
-                    break;
-                }
-            } while (usedCombinations.has(email));
-            
-            usedCombinations.add(email);
-            
-            // Generate temporary password
-            const password = this.generatePassword();
-            
-            this.generatedEmails.push({
-                nombre: nombre,
-                apellido: apellido,
-                email: email,
-                password: password,
-                username: username
-            });
+        // Validation
+        if (!dni || dni.length !== 8) {
+            alert('Por favor, ingrese un DNI válido de 8 dígitos');
+            dniInput.focus();
+            return;
         }
-    }
-    
-    createUsername(nombre, apellido) {
-        // Remove accents and convert to lowercase
-        const cleanNombre = this.removeAccents(nombre.toLowerCase());
-        const cleanApellido = this.removeAccents(apellido.toLowerCase());
         
-        return `${cleanNombre}.${cleanApellido}`;
+        if (!firstName) {
+            alert('Por favor, ingrese los nombres');
+            firstNameInput.focus();
+            return;
+        }
+        
+        if (!lastName) {
+            alert('Por favor, ingrese los apellidos');
+            lastNameInput.focus();
+            return;
+        }
+        
+        // Validate student-specific fields
+        if (userType === 'estudiante') {
+            if (!grade) {
+                alert('Por favor, seleccione el grado');
+                gradeSelect.focus();
+                return;
+            }
+            if (!section) {
+                alert('Por favor, seleccione la sección');
+                sectionSelect.focus();
+                return;
+            }
+        }
+        
+        // Check if DNI already exists
+        if (this.generatedEmails.some(email => email.dni === dni)) {
+            alert('Ya existe un correo generado con este DNI');
+            return;
+        }
+        
+        // Create email with new format: FirstLetter + DNI + @domain
+        const firstLetter = firstName.charAt(0).toLowerCase();
+        const email = `${firstLetter}${dni}@${domain}`;
+        
+        // Generate random password
+        const password = this.generateRandomPassword();
+        
+        // Create user description
+        let userDescription = userType === 'docente' ? 'Docente' : `Estudiante - ${this.formatGrade(grade)} Sección ${section}`;
+        
+        const emailData = {
+            dni: dni,
+            name: `${firstName} ${lastName}`,
+            email: email,
+            password: password,
+            userType: userType,
+            grade: grade,
+            section: section,
+            userDescription: userDescription,
+            createdAt: new Date().toLocaleString('es-PE')
+        };
+        
+        this.generatedEmails.push(emailData);
+        
+        // Add to display
+        const emailItem = document.createElement('div');
+        emailItem.className = 'email-item';
+        emailItem.innerHTML = `
+            <div>
+                <strong>${emailData.name}</strong>
+                <span class="user-type-badge ${userType}">${userDescription}</span><br>
+                <span style="color: var(--color1); font-weight: 500;">${emailData.email}</span><br>
+                <small style="color: var(--text-light);">DNI: ${emailData.dni} | Creado: ${emailData.createdAt}</small>
+            </div>
+            <div class="email-credentials">
+                <small>Contraseña: <strong style="color: var(--color2);">${emailData.password}</strong></small>
+                <button class="btn-remove" onclick="emailGenerator.removeEmail('${emailData.dni}')" style="margin-left: 10px; padding: 4px 8px; font-size: 12px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+        
+        emailsList.appendChild(emailItem);
+        generatedEmailsDiv.style.display = 'block';
+        
+        // Clear form
+        this.resetForm();
+        
+        // Show success message
+        this.showSuccessMessage('Correo institucional creado exitosamente');
     }
     
-    removeAccents(str) {
-        return str.normalize('NFD')
-                 .replace(/[\u0300-\u036f]/g, '')
-                 .replace(/[^a-z0-9]/g, '');
+    formatGrade(grade) {
+        if (!grade) return '';
+        const [number, level] = grade.split('-');
+        return `${number}° ${level.charAt(0).toUpperCase() + level.slice(1)}`;
     }
     
-    generatePassword() {
+    generateRandomPassword() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let password = '';
-        
         for (let i = 0; i < 8; i++) {
             password += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        
         return password;
     }
     
-    getRandomItem(array) {
-        return array[Math.floor(Math.random() * array.length)];
+    removeEmail(dni) {
+        this.generatedEmails = this.generatedEmails.filter(email => email.dni !== dni);
+        this.refreshEmailsList();
+        
+        if (this.generatedEmails.length === 0) {
+            const generatedEmailsDiv = document.getElementById('generatedEmails');
+            if (generatedEmailsDiv) {
+                generatedEmailsDiv.style.display = 'none';
+            }
+        }
     }
     
-    displayGeneratedEmails() {
-        this.emailsListDiv.innerHTML = '';
+    refreshEmailsList() {
+        const emailsList = document.querySelector('.emails-list');
+        if (!emailsList) return;
         
-        this.generatedEmails.forEach((emailData, index) => {
+        emailsList.innerHTML = '';
+        
+        this.generatedEmails.forEach(emailData => {
             const emailItem = document.createElement('div');
             emailItem.className = 'email-item';
             emailItem.innerHTML = `
-                <div class="email-info">
-                    <strong>${emailData.nombre} ${emailData.apellido}</strong>
-                    <div class="email-address">${emailData.email}</div>
+                <div>
+                    <strong>${emailData.name}</strong>
+                    <span class="user-type-badge ${emailData.userType}">${emailData.userDescription}</span><br>
+                    <span style="color: var(--color1); font-weight: 500;">${emailData.email}</span><br>
+                    <small style="color: var(--text-light);">DNI: ${emailData.dni} | Creado: ${emailData.createdAt}</small>
                 </div>
                 <div class="email-credentials">
-                    <small>Usuario: ${emailData.username}</small><br>
-                    <small>Contraseña: ${emailData.password}</small>
+                    <small>Contraseña: <strong style="color: var(--color2);">${emailData.password}</strong></small>
+                    <button class="btn-remove" onclick="emailGenerator.removeEmail('${emailData.dni}')" style="margin-left: 10px; padding: 4px 8px; font-size: 12px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
             `;
-            
-            this.emailsListDiv.appendChild(emailItem);
+            emailsList.appendChild(emailItem);
         });
     }
     
-    showGeneratedSection() {
-        if (this.generatedEmailsDiv) {
-            this.generatedEmailsDiv.style.display = 'block';
-            
-            // Scroll to generated emails
-            this.generatedEmailsDiv.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'nearest' 
-            });
-        }
+    showSuccessMessage(message) {
+        // Create temporary success message
+        const successDiv = document.createElement('div');
+        successDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 3000;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+            animation: slideIn 0.3s ease-out;
+        `;
+        successDiv.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        
+        document.body.appendChild(successDiv);
+        
+        setTimeout(() => {
+            successDiv.style.animation = 'slideOut 0.3s ease-in';
+            setTimeout(() => {
+                if (document.body.contains(successDiv)) {
+                    document.body.removeChild(successDiv);
+                }
+            }, 300);
+        }, 3000);
     }
     
-    downloadEmailsList() {
+    downloadEmailList() {
         if (this.generatedEmails.length === 0) {
-            this.showNotification('No hay correos para descargar', 'error');
+            alert('No hay correos generados para descargar');
             return;
         }
         
-        // Create CSV content
-        let csvContent = 'Nombre,Apellido,Correo Electrónico,Usuario,Contraseña\n';
+        let csvContent = 'DNI,Nombre,Tipo,Grado,Sección,Correo Electrónico,Contraseña,Fecha de Creación\n';
         
-        this.generatedEmails.forEach(emailData => {
-            csvContent += `"${emailData.nombre}","${emailData.apellido}","${emailData.email}","${emailData.username}","${emailData.password}"\n`;
+        this.generatedEmails.forEach(email => {
+            const grade = email.grade ? this.formatGrade(email.grade) : 'N/A';
+            const section = email.section || 'N/A';
+            csvContent += `"${email.dni}","${email.name}","${email.userType}","${grade}","${section}","${email.email}","${email.password}","${email.createdAt}"\n`;
         });
         
-        // Create and download file
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         
@@ -288,63 +347,17 @@ class EmailGenerator {
             link.click();
             document.body.removeChild(link);
             
-            this.showNotification('Lista de correos descargada exitosamente', 'success');
-        } else {
-            this.showNotification('Su navegador no soporta la descarga automática', 'error');
+            this.showSuccessMessage('Lista de correos descargada exitosamente');
         }
-    }
-    
-    showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                <span>${message}</span>
-            </div>
-        `;
-        
-        // Add styles
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#d1ecf1'};
-            color: ${type === 'success' ? '#155724' : type === 'error' ? '#721c24' : '#0c5460'};
-            border: 1px solid ${type === 'success' ? '#c3e6cb' : type === 'error' ? '#f5c6cb' : '#bee5eb'};
-            border-radius: 8px;
-            padding: 1rem;
-            z-index: 3000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            max-width: 400px;
-        `;
-        
-        // Add to document
-        document.body.appendChild(notification);
-        
-        // Animate in
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Remove after delay
-        setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 300);
-        }, 4000);
     }
 }
 
-// Initialize email generator when DOM is loaded
+// Global variable for access from HTML onclick
+let emailGenerator;
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new EmailGenerator();
+    emailGenerator = new EmailGenerator();
 });
 
 // Export for use in other modules

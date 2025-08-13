@@ -1127,9 +1127,19 @@ input:checked + .slider:before {
 .email-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
+    align-items: flex-start;
+    padding: 1rem;
     border-bottom: 1px solid var(--border-color);
+    background: var(--color5);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.email-item:hover {
+    background: var(--color4);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
 }
 
 .email-item:last-child {
@@ -1139,6 +1149,69 @@ input:checked + .slider:before {
 .email-credentials {
     font-size: 0.875rem;
     color: var(--text-light);
+    text-align: right;
+}
+
+.user-type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.user-type-badge.estudiante {
+    background: var(--color4);
+    color: var(--color1);
+}
+
+.user-type-badge.docente {
+    background: #e8f5e8;
+    color: #2d5a2d;
+}
+
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--color5);
+    color: var(--text-dark);
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color1);
+    box-shadow: 0 0 0 3px rgba(0, 133, 255, 0.1);
+}
+
+#gradeSection, #sectionGroup {
+    transition: var(--transition);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
 }
 
 /* Responsive Design */

@@ -48,6 +48,8 @@ class ArchEducationDashboard {
         this.setupLibraryUpload();
         this.setupSettingsToggles();
         this.setupMessageComposer();
+        this.setupUserTabs();
+        this.setupUserSearch();
         this.startRealTimeUpdates();
     }
     
@@ -649,6 +651,67 @@ class ArchEducationDashboard {
                 }
             }, 300);
         }, 4000);
+    }
+    
+    setupUserTabs() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const docentesList = document.getElementById('docentes-list');
+        const estudiantesList = document.getElementById('estudiantes-list');
+        
+        if (!tabButtons.length || !docentesList || !estudiantesList) {
+            return;
+        }
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabType = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show/hide appropriate user lists
+                if (tabType === 'docentes') {
+                    docentesList.style.display = 'flex';
+                    docentesList.style.flexDirection = 'column';
+                    estudiantesList.style.display = 'none';
+                } else if (tabType === 'estudiantes') {
+                    docentesList.style.display = 'none';
+                    estudiantesList.style.display = 'flex';
+                    estudiantesList.style.flexDirection = 'column';
+                }
+            });
+        });
+    }
+    
+    setupUserSearch() {
+        const searchInput = document.querySelector('.users-container .search-box input');
+        
+        if (!searchInput) return;
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const activeList = document.querySelector('.users-list[style*="flex"]:not([style*="none"])') || 
+                              document.querySelector('.users-list:not([style*="none"])');
+            
+            if (!activeList) return;
+            
+            const userCards = activeList.querySelectorAll('.user-card');
+            
+            userCards.forEach(card => {
+                const userName = card.querySelector('h4').textContent.toLowerCase();
+                const userEmail = card.querySelector('.user-email').textContent.toLowerCase();
+                const userInfo = card.querySelector('p').textContent.toLowerCase();
+                
+                if (userName.includes(searchTerm) || userEmail.includes(searchTerm) || userInfo.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     }
 }
 
