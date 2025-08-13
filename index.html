@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchEducation - Dashboard Ejecutivo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>ArchEducation</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/40x40/0085ff/ffffff?text=JP" alt="Profile" class="profile-img">
+                    <span class="user-name">Juan Pérez</span>
+                    <span class="user-role">Ejecutivo - I.E. José Faustino Sánchez Carrión</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-section="dashboard" data-tooltip="Dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-section="ajustes" data-tooltip="Ajustes">
+                        <i class="fas fa-cog"></i>
+                        <span>Ajustes</span>
+                    </li>
+                    <li class="nav-item" data-section="mensajes" data-tooltip="Mensajes">
+                        <i class="fas fa-envelope"></i>
+                        <span>Mensajes</span>
+                        <span class="message-badge">2</span>
+                    </li>
+                    <li class="nav-item" data-section="usuarios" data-tooltip="Usuarios">
+                        <i class="fas fa-users"></i>
+                        <span>Usuarios</span>
+                    </li>
+                    <li class="nav-item" data-section="repositorios" data-tooltip="Repositorios">
+                        <i class="fas fa-folder"></i>
+                        <span>Repositorios</span>
+                    </li>
+                    <li class="nav-item" data-section="biblioteca" data-tooltip="Biblioteca">
+                        <i class="fas fa-book"></i>
+                        <span>Biblioteca</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard Principal</h1>
+                    <p>Bienvenido al panel de control de ArchEducation</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>45</h3>
+                            <p>Docentes Registrados</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,250</h3>
+                            <p>Estudiantes Activos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>28</h3>
+                            <p>Recursos Biblioteca</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>15</h3>
+                            <p>Repositorios Activos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h2>Actividad Reciente</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-user-plus"></i>
+                            <div class="activity-content">
+                                <p><strong>María González</strong> se registró como docente</p>
+                                <span class="activity-time">Hace 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-upload"></i>
+                            <div class="activity-content">
+                                <p>Nuevo recurso subido a <strong>Biblioteca</strong></p>
+                                <span class="activity-time">Hace 4 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-message"></i>
+                            <div class="activity-content">
+                                <p>Mensaje recibido del <strong>Soporte Técnico</strong></p>
+                                <span class="activity-time">Hace 1 día</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ajustes Section -->
+            <section id="ajustes" class="content-section">
+                <div class="section-header">
+                    <h1>Configuración del Perfil</h1>
+                    <p>Administra tu información personal y configuraciones</p>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Información Personal</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Nombres</label>
+                                <input type="text" value="Juan Carlos" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                <input type="text" value="Pérez Mendoza" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Correo Electrónico</label>
+                                <input type="email" value="juan.perez@educacion.gob.pe" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input type="tel" value="+51 987 654 321" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Centro Educativo</label>
+                                <input type="text" value="I.E. José Faustino Sánchez Carrión" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Código Modular</label>
+                                <input type="text" value="0123456" readonly>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Configuraciones</h3>
+                        <div class="setting-item">
+                            <span>Notificaciones por correo</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Notificaciones push</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Modo oscuro</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mensajes Section -->
+            <section id="mensajes" class="content-section">
+                <div class="section-header">
+                    <h1>Centro de Mensajes</h1>
+                    <p>Comunicación directa con el soporte técnico de ArchEducation</p>
+                </div>
+                <div class="messages-container">
+                    <div class="messages-list">
+                        <div class="message-item unread">
+                            <div class="message-avatar">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <strong>Soporte Técnico ArchEducation</strong>
+                                    <span class="message-time">10:30 AM</span>
+                                </div>
+                                <p>Hemos actualizado las funcionalidades del generador de correos institucionales. Ahora puede generar hasta 100 correos simultáneamente.</p>
+                            </div>
+                        </div>
+                        <div class="message-item unread">
+                            <div class="message-avatar">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <strong>Soporte Técnico ArchEducation</strong>
+                                    <span class="message-time">Ayer</span>
+                                </div>
+                                <p>Recordatorio: La capacitación sobre el uso de repositorios educativos será el próximo viernes a las 3:00 PM.</p>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <strong>Usted</strong>
+                                    <span class="message-time">Hace 2 días</span>
+                                </div>
+                                <p>Gracias por la implementación del sistema. Los docentes están muy satisfechos con la plataforma.</p>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <strong>Soporte Técnico ArchEducation</strong>
+                                    <span class="message-time">Hace 3 días</span>
+                                </div>
+                                <p>Su solicitud de implementación ha sido aprobada. Bienvenido a ArchEducation. En breve recibirá las credenciales de acceso.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-compose">
+                        <textarea placeholder="Escriba su mensaje al soporte técnico..."></textarea>
+                        <button class="btn-send">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensaje
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Usuarios Section -->
+            <section id="usuarios" class="content-section">
+                <div class="section-header">
+                    <h1>Gestión de Usuarios</h1>
+                    <p>Administre docentes y estudiantes de su institución</p>
+                </div>
+                <div class="users-container">
+                    <div class="users-actions">
+                        <button class="btn-primary" id="generateEmailsBtn">
+                            <i class="fas fa-envelope"></i>
+                            Generar Correos Institucionales
+                        </button>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar usuarios...">
+                        </div>
+                    </div>
+                    <div class="users-tabs">
+                        <button class="tab-btn active" data-tab="docentes">Docentes (45)</button>
+                        <button class="tab-btn" data-tab="estudiantes">Estudiantes (1,250)</button>
+                    </div>
+                    <div class="users-list" id="docentes-list">
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/0085ff/ffffff?text=MG" alt="María González">
+                            </div>
+                            <div class="user-info">
+                                <h4>María Elena González Vásquez</h4>
+                                <p>Matemáticas - 3° Secundaria</p>
+                                <span class="user-email">maria.gonzalez@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/00a7ff/ffffff?text=CR" alt="Carlos Rodríguez">
+                            </div>
+                            <div class="user-info">
+                                <h4>Carlos Alberto Rodríguez Huamán</h4>
+                                <p>Historia y Geografía - 4° Secundaria</p>
+                                <span class="user-email">carlos.rodriguez@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/82ceff/ffffff?text=LP" alt="Lucía Paredes">
+                            </div>
+                            <div class="user-info">
+                                <h4>Lucía Patricia Paredes Quispe</h4>
+                                <p>Comunicación - 2° Secundaria</p>
+                                <span class="user-email">lucia.paredes@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status active">Activo</div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-avatar">
+                                <img src="https://via.placeholder.com/50x50/0085ff/ffffff?text=RH" alt="Roberto Herrera">
+                            </div>
+                            <div class="user-info">
+                                <h4>Roberto Miguel Herrera Ccahuana</h4>
+                                <p>Ciencias Naturales - 1° Secundaria</p>
+                                <span class="user-email">roberto.herrera@jfsanchezcarrion.edu.pe</span>
+                            </div>
+                            <div class="user-status inactive">Inactivo</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Repositorios Section -->
+            <section id="repositorios" class="content-section">
+                <div class="section-header">
+                    <h1>Repositorios Educativos</h1>
+                    <p>Contenido educativo creado por su institución</p>
+                </div>
+                <div class="repositories-container">
+                    <div class="repositories-filters">
+                        <div class="filter-group">
+                            <select id="subject-filter">
+                                <option value="">Todas las materias</option>
+                                <option value="matematicas">Matemáticas</option>
+                                <option value="comunicacion">Comunicación</option>
+                                <option value="ciencias">Ciencias Naturales</option>
+                                <option value="historia">Historia y Geografía</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="grade-filter">
+                                <option value="">Todos los grados</option>
+                                <option value="1">1° Secundaria</option>
+                                <option value="2">2° Secundaria</option>
+                                <option value="3">3° Secundaria</option>
+                                <option value="4">4° Secundaria</option>
+                                <option value="5">5° Secundaria</option>
+                            </select>
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="repo-search" placeholder="Buscar en repositorios...">
+                        </div>
+                    </div>
+                    <div class="repositories-grid">
+                        <div class="repo-card" data-subject="matematicas" data-grade="3">
+                            <div class="repo-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="repo-content">
+                                <h4>Álgebra Básica - Ecuaciones Lineales</h4>
+                                <p>Autor: María Elena González Vásquez</p>
+                                <div class="repo-meta">
+                                    <span class="repo-subject">Matemáticas</span>
+                                    <span class="repo-grade">3° Secundaria</span>
+                                </div>
+                                <div class="repo-stats">
+                                    <span><i class="fas fa-download"></i> 45 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="repo-card" data-subject="historia" data-grade="4">
+                            <div class="repo-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="repo-content">
+                                <h4>Historia del Perú - Época Republicana</h4>
+                                <p>Autor: Carlos Alberto Rodríguez Huamán</p>
+                                <div class="repo-meta">
+                                    <span class="repo-subject">Historia</span>
+                                    <span class="repo-grade">4° Secundaria</span>
+                                </div>
+                                <div class="repo-stats">
+                                    <span><i class="fas fa-download"></i> 32 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="repo-card" data-subject="comunicacion" data-grade="2">
+                            <div class="repo-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <div class="repo-content">
+                                <h4>Comprensión Lectora - Textos Narrativos</h4>
+                                <p>Autor: Lucía Patricia Paredes Quispe</p>
+                                <div class="repo-meta">
+                                    <span class="repo-subject">Comunicación</span>
+                                    <span class="repo-grade">2° Secundaria</span>
+                                </div>
+                                <div class="repo-stats">
+                                    <span><i class="fas fa-download"></i> 28 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="repo-card" data-subject="ciencias" data-grade="1">
+                            <div class="repo-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="repo-content">
+                                <h4>Biología - Sistema Digestivo Humano</h4>
+                                <p>Autor: Roberto Miguel Herrera Ccahuana</p>
+                                <div class="repo-meta">
+                                    <span class="repo-subject">Ciencias</span>
+                                    <span class="repo-grade">1° Secundaria</span>
+                                </div>
+                                <div class="repo-stats">
+                                    <span><i class="fas fa-download"></i> 38 descargas</span>
+                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Biblioteca Section -->
+            <section id="biblioteca" class="content-section">
+                <div class="section-header">
+                    <h1>Biblioteca Digital</h1>
+                    <p>Recursos educativos y libros digitales para su institución</p>
+                </div>
+                <div class="library-container">
+                    <div class="library-actions">
+                        <button class="btn-primary" id="uploadBookBtn">
+                            <i class="fas fa-upload"></i>
+                            Subir Libro
+                        </button>
+                        <div class="library-filters">
+                            <select id="category-filter">
+                                <option value="">Todas las categorías</option>
+                                <option value="textos">Textos Escolares</option>
+                                <option value="literatura">Literatura</option>
+                                <option value="ciencia">Ciencia y Tecnología</option>
+                                <option value="historia">Historia y Cultura</option>
+                            </select>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="library-search" placeholder="Buscar libros...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="library-grid">
+                        <div class="book-card" data-category="textos">
+                            <div class="book-cover">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-info">
+                                <h4>Matemática 3° Secundaria</h4>
+                                <p>Ministerio de Educación</p>
+                                <div class="book-meta">
+                                    <span class="book-category">Textos Escolares</span>
+                                    <span class="book-year">2024</span>
+                                </div>
+                                <div class="book-stats">
+                                    <span><i class="fas fa-eye"></i> 156 vistas</span>
+                                    <span><i class="fas fa-download"></i> 89 descargas</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Ver Libro
+                                </button>
+                            </div>
+                        </div>
+                        <div class="book-card" data-category="literatura">
+                            <div class="book-cover">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="book-info">
+                                <h4>Tradiciones Peruanas</h4>
+                                <p>Ricardo Palma</p>
+                                <div class="book-meta">
+                                    <span class="book-category">Literatura</span>
+                                    <span class="book-year">Clásico</span>
+                                </div>
+                                <div class="book-stats">
+                                    <span><i class="fas fa-eye"></i> 203 vistas</span>
+                                    <span><i class="fas fa-download"></i> 145 descargas</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Ver Libro
+                                </button>
+                            </div>
+                        </div>
+                        <div class="book-card" data-category="ciencia">
+                            <div class="book-cover">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="book-info">
+                                <h4>Ciencia y Tecnología 2° Secundaria</h4>
+                                <p>Ministerio de Educación</p>
+                                <div class="book-meta">
+                                    <span class="book-category">Ciencia y Tecnología</span>
+                                    <span class="book-year">2024</span>
+                                </div>
+                                <div class="book-stats">
+                                    <span><i class="fas fa-eye"></i> 134 vistas</span>
+                                    <span><i class="fas fa-download"></i> 67 descargas</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Ver Libro
+                                </button>
+                            </div>
+                        </div>
+                        <div class="book-card" data-category="historia">
+                            <div class="book-cover">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <div class="book-info">
+                                <h4>Historia del Perú Contemporáneo</h4>
+                                <p>Carlos Contreras</p>
+                                <div class="book-meta">
+                                    <span class="book-category">Historia y Cultura</span>
+                                    <span class="book-year">2023</span>
+                                </div>
+                                <div class="book-stats">
+                                    <span><i class="fas fa-eye"></i> 178 vistas</span>
+                                    <span><i class="fas fa-download"></i> 92 descargas</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Ver Libro
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Email Generator Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generador de Correos Institucionales</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="generator-form">
+                    <div class="form-group">
+                        <label>Dominio Institucional</label>
+                        <input type="text" id="domain" value="jfsanchezcarrion.edu.pe" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad de Correos a Generar (máx. 100)</label>
+                        <input type="number" id="emailCount" min="1" max="100" value="10">
+                    </div>
+                    <button id="generateBtn" class="btn-primary">
+                        <i class="fas fa-magic"></i>
+                        Generar Correos
+                    </button>
+                </div>
+                <div id="generatedEmails" class="generated-emails" style="display: none;">
+                    <h3>Correos Generados</h3>
+                    <div class="emails-list"></div>
+                    <button id="downloadEmails" class="btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Descargar Lista
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/email-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
